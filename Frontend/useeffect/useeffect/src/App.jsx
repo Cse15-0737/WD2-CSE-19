@@ -16,22 +16,55 @@
 import React, {useState, useEffect} from "react";
 
 const App = () => {
-  return (
-    <div>
-     <form action="">
-      <label htmlFor="">
-        Name: <input type="text"/>
-        </label>
-        <br></br>
-        <label htmlFor="">
-        Email: <input type="email"/>
-      </label>
-      <br></br>
-       <label htmlFor="">
-      Password: <input type="password"/>
-     </label>
-     </form>
+ const [formData, setformData]=useState({
+  name: "",
+  email: "",
+  password: ""
+ })
 
+ useEffect(()=>{
+  console.log("form data update", formData);
+ }, [formData])
+
+ const handleChange =(e)=>{
+  setformData({
+   ...formData,
+   [e.target.name]:e.target.value,
+  })
+ }
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  alert("Registration Successfull");
+  console.log(formData);
+ }
+
+  return (
+    <div style={{margin: '20px', padding:'10px'}}>
+     <form onSubmit={handleSubmit} style={{backgroundColor: 'white'}}>
+ <input type="text" 
+ name="name"
+ placeholder="Enter Your Name"
+ value={formData.name}
+ onChange={handleChange}
+ />
+ <br/>
+<input type="email"
+name="email"
+placeholder="Enter Your Email"
+value={formData.email}
+ onChange={handleChange}
+/>
+<br/>
+<input type="password"
+name="password"
+placeholder="Enter Your Pasword"
+value={formData.password}
+ onChange={handleChange}
+/>
+<br/>
+<br/>
+<button type="submit" style={{backgroundColor: 'green', borderRadius: '20%'}}>Registration</button>
+     </form>
     </div>
   )
 }
