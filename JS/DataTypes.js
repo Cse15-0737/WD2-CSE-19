@@ -1,0 +1,10 @@
+let name ="Aaryan";
+let age='20';
+let isStudent=true;
+let address=null;
+let car=undefined;
+console.log(typeof name);
+console.log(typeof age);
+console.log(typeof isStudent);
+console.log(typeof address);
+console.log(typeof car);
